@@ -1,0 +1,21 @@
+{
+  "name": "chiispa-games",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently -n server,web -c yellow,cyan \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "npm run dev -w @chispa/server",
+    "dev:web": "npm run dev -w @chispa/web",
+    "build": "npm run build -w @chispa/game-core && npm run build -w @chispa/protocol && npm run build -w @chispa/server && npm run build -w @chispa/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
